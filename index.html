@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>דרושים – targetcall</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&family=Poppins:wght@700;900&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Heebo', sans-serif; direction: rtl; background: #f5f6fa; min-height: 100vh; }
+
+    /* HEADER */
+    .header {
+      background: #fff;
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .logo-wrap { display: flex; flex-direction: column; align-items: flex-start; }
+    .logo {
+      display: flex;
+      align-items: baseline;
+      direction: ltr;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+    .logo-target { color: #1a1a1a; }
+    .logo-call { color: #5b9bd5; }
+    .logo-tagline { font-size: 11px; color: #888; font-family: 'Heebo', sans-serif; direction: ltr; margin-top: 2px; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      padding: 52px 24px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(91,155,213,0.13) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(91,155,213,0.18);
+      border: 1px solid rgba(91,155,213,0.4);
+      color: #5b9bd5;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .dot-live {
+      width: 7px; height: 7px;
+      background: #5b9bd5;
+      border-radius: 50%;
+      animation: blink 1.4s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .hero h1 { color: #fff; font-size: 32px; font-weight: 900; line-height: 1.25; margin-bottom: 12px; }
+    .hero h1 em { color: #5b9bd5; font-style: normal; }
+    .hero p { color: rgba(255,255,255,0.75); font-size: 16px; line-height: 1.7; max-width: 440px; margin: 0 auto 30px; }
+
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      background: rgba(255,255,255,0.07);
+      border-radius: 14px;
+      max-width: 360px;
+      margin: 0 auto;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat { flex: 1; padding: 14px 10px; text-align: center; border-left: 1px solid rgba(255,255,255,0.1); }
+    .stat:last-child { border-left: none; }
+    .stat-n { font-size: 22px; font-weight: 900; color: #5b9bd5; }
+    .stat-l { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+
+    /* PERKS */
+    .perks {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 24px;
+      padding: 18px 20px;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+    }
+    .perk { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #333; font-weight: 500; }
+    .perk-dot {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: #5b9bd5;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .chk {
+      width: 9px; height: 5px;
+      border-left: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      transform: rotate(-45deg) translate(1px,-1px);
+    }
+
+    /* FORM */
+    .form-wrap { padding: 32px 20px 56px; max-width: 480px; margin: 0 auto; }
+    .form-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 32px 28px 26px;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.1);
+    }
+    .form-head { text-align: center; margin-bottom: 24px; }
+    .form-head h2 { font-size: 20px; font-weight: 700; color: #1a1a1a; margin-bottom: 5px; }
+    .form-head p { font-size: 14px; color: #999; }
+
+    .field { margin-bottom: 14px; }
+    .field label { display: block; font-size: 13px; font-weight: 500; color: #555; margin-bottom: 6px; }
+    .field input, .field select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #e2e2e2;
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: 'Heebo', sans-serif;
+      color: #1a1a1a;
+      background: #fafafa;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      direction: rtl;
+    }
+    .field input:focus, .field select:focus { border-color: #5b9bd5; background: #fff; }
+
+    .btn {
+      width: 100%;
+      padding: 15px;
+      background: #5b9bd5;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      font-family: 'Heebo', sans-serif;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn:hover { background: #4a89c5; transform: translateY(-1px); }
+    .btn:active { transform: scale(0.98); }
+    .btn:disabled { background: #aac4e0; cursor: not-allowed; transform: none; }
+
+    .privacy { font-size: 11px; color: #ccc; text-align: center; margin-top: 12px; }
+    .tagline-footer { font-size: 12px; color: #ccc; text-align: center; margin-top: 16px; font-family: 'Poppins', sans-serif; direction: ltr; }
+    .tagline-footer span { color: #5b9bd5; }
+
+    /* SUCCESS */
+    .success { display: none; text-align: center; padding: 16px 0; }
+    .s-circle {
+      width: 72px; height: 72px;
+      background: #5b9bd5;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px;
+    }
+    .s-chk {
+      width: 30px; height: 17px;
+      border-left: 4px solid #fff;
+      border-bottom: 4px solid #fff;
+      transform: rotate(-45deg) translate(3px,-3px);
+    }
+    .success h3 { font-size: 21px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
+    .success p { font-size: 14px; color: #777; line-height: 1.7; }
+
+    /* ERROR */
+    .error-msg { display: none; background: #fff0f0; border: 1px solid #fcc; color: #c00; font-size: 13px; padding: 10px 14px; border-radius: 8px; margin-top: 10px; text-align: center; }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 26px; }
+      .form-card { padding: 24px 18px 20px; }
+      .logo { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="logo-wrap">
+      <div class="logo">
+        <span class="logo-target">target</span><span class="logo-call">call</span>
+      </div>
+      <span class="logo-tagline">Simply better.</span>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-badge"><div class="dot-live"></div>גיוס פעיל – כל הארץ</div>
+    <h1>מצטרפים למשפחה של<br><em>מעל 1,000 עובדים</em></h1>
+    <p>אווירה משפחתית, קידום אמיתי ותנאים מנצחים. השאירו פרטים ונציג יחזור אליכם בהקדם.</p>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-n">1,000+</div><div class="stat-l">עובדים</div></div>
+      <div class="stat"><div class="stat-n">11</div><div class="stat-l">סניפים</div></div>
+      <div class="stat"><div class="stat-n">15+</div><div class="stat-l">שנות ניסיון</div></div>
+    </div>
+  </div>
+
+  <div class="perks">
+    <div class="perk"><div class="perk-dot"><div class="chk"></div></div>שכר אטרקטיבי</div>
+    <div class="perk"><div class="perk-dot"><div class="chk"></div></div>משמרות גמישות</div>
+    <div class="perk"><div class="perk-dot"><div class="chk"></div></div>הכשרה מלאה</div>
+    <div class="perk"><div class="perk-dot"><div class="chk"></div></div>קידום מהיר</div>
+    <div class="perk"><div class="perk-dot"><div class="chk"></div></div>אווירה משפחתית</div>
+  </div>
+
+  <div class="form-wrap">
+    <div class="form-card">
+      <div id="form-inner">
+        <div class="form-head">
+          <h2>השאירו פרטים עכשיו</h2>
+          <p>נציג גיוס יחזור אליכם תוך 24 שעות</p>
+        </div>
+        <div class="field">
+          <label for="name">שם מלא</label>
+          <input type="text" id="name" name="name" placeholder="ישראל ישראלי" required />
+        </div>
+        <div class="field">
+          <label for="phone">טלפון</label>
+          <input type="tel" id="phone" name="phone" placeholder="050-0000000" required />
+        </div>
+        <div class="field">
+          <label for="city">עיר מגורים</label>
+          <input type="text" id="city" name="city" placeholder="תל אביב, אשדוד, חיפה..." required />
+        </div>
+        <div class="field">
+          <label for="shift">משמרת מועדפת</label>
+          <select id="shift" name="shift">
+            <option value="">בחר/י</option>
+            <option value="בוקר">בוקר</option>
+            <option value="ערב">ערב</option>
+            <option value="גמיש / שניהם">גמיש / שניהם</option>
+          </select>
+        </div>
+        <button class="btn" id="submit-btn" onclick="submitForm()">שלחו את הפרטים שלי ←</button>
+        <div class="error-msg" id="error-msg">אירעה שגיאה, נסו שוב או צרו קשר ישירות.</div>
+        <div class="privacy">הפרטים שלכם נשמרים בסודיות מלאה</div>
+        <div class="tagline-footer"><span>target</span>call · Simply better.</div>
+      </div>
+      <div class="success" id="success-msg">
+        <div class="s-circle"><div class="s-chk"></div></div>
+        <h3>קיבלנו! תודה רבה</h3>
+        <p>נציג מצוות הגיוס של targetcall<br>יצור איתכם קשר תוך 24 שעות.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =====================================================
+    // הכנס כאן את הכתובת שתקבל מ-Google Apps Script
+    // =====================================================
+    const APPS_SCRIPT_URL = "YOUR_APPS_SCRIPT_URL_HERE";
+    // =====================================================
+
+    async function submitForm() {
+      const name  = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const city  = document.getElementById('city').value.trim();
+      const shift = document.getElementById('shift').value;
+
+      if (!name || !phone || !city) {
+        alert('נא למלא שם, טלפון ועיר');
+        return;
+      }
+
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'שולח...';
+
+      const data = {
+        name,
+        phone,
+        city,
+        shift: shift || 'לא צוין',
+        timestamp: new Date().toLocaleString('he-IL')
+      };
+
+      try {
+        await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        document.getElementById('form-inner').style.display = 'none';
+        document.getElementById('success-msg').style.display = 'block';
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'שלחו את הפרטים שלי ←';
+        document.getElementById('error-msg').style.display = 'block';
+      }
+    }
+  </script>
+
+</body>
+</html>
