@@ -3,281 +3,497 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>דרושים – targetcall</title>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&family=Poppins:wght@700;900&display=swap" rel="stylesheet" />
+  <title>דרושים – טרגט קול</title>
+  <meta name="description" content="מצטרפים לטרגט קול – גיוס לסניף שדרות. שכר אטרקטיבי, שעות יום נוחות, הכשרה מלאה ועבודה בעולם הכושר והבריאות." />
+  <meta name="theme-color" content="#4b92f6" />
+  <link rel="icon" href="https://targetcall.co.il/wp-content/uploads/2020/10/targetcall-logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --blue: #4b92f6;
+      --blue-dark: #2f78e0;
+      --blue-soft: #f0f6ff;
+      --blue-soft-2: #eef5fc;
+      --blue-line: #d4e3f9;
+      --ink: #000;
+      --text: #333;
+      --muted: #6d6c6c;
+      --error: #f85757;
+      --white: #fff;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Heebo', sans-serif; direction: rtl; background: #f5f6fa; min-height: 100vh; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Heebo', Arial, sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
 
-
+    /* HEADER */
+    .header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--blue-soft-2);
+    }
+    .header-in {
+      max-width: 1100px; margin: 0 auto;
+      padding: 14px 20px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .logo img { height: 34px; width: auto; display: block; }
+    .header-cta {
+      background: var(--blue); color: #fff; text-decoration: none;
+      font-weight: 500; font-size: 15px;
+      padding: 9px 22px; border-radius: 100px;
+      transition: background .2s;
+    }
+    .header-cta:hover { background: var(--blue-dark); }
 
     /* HERO */
     .hero {
-      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      padding: 52px 24px 44px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      background: var(--blue-soft);
+      position: relative; overflow: hidden;
+    }
+    .hero::before, .hero::after {
+      content: ''; position: absolute; border-radius: 50%; pointer-events: none;
     }
     .hero::before {
-      content: '';
-      position: absolute;
-      top: -100px; right: -100px;
-      width: 350px; height: 350px;
-      background: radial-gradient(circle, rgba(91,155,213,0.13) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
+      width: 420px; height: 420px; top: -180px; left: -140px;
+      background: radial-gradient(circle, rgba(75,146,246,0.18), transparent 70%);
     }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: rgba(91,155,213,0.18);
-      border: 1px solid rgba(91,155,213,0.4);
-      color: #5b9bd5;
-      font-size: 13px;
-      font-weight: 500;
-      padding: 6px 16px;
-      border-radius: 20px;
-      margin-bottom: 20px;
+    .hero::after {
+      width: 260px; height: 260px; bottom: -120px; right: -80px;
+      border: 40px solid rgba(75,146,246,0.08);
     }
-    .dot-live {
-      width: 7px; height: 7px;
-      background: #5b9bd5;
-      border-radius: 50%;
-      animation: blink 1.4s infinite;
+    .hero-in {
+      position: relative; z-index: 1;
+      max-width: 1100px; margin: 0 auto;
+      padding: 64px 20px 56px;
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center;
     }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-    .hero h1 { color: #fff; font-size: 32px; font-weight: 900; line-height: 1.25; margin-bottom: 12px; }
-    .hero h1 em { color: #5b9bd5; font-style: normal; }
-    .hero p { color: rgba(255,255,255,0.75); font-size: 16px; line-height: 1.7; max-width: 440px; margin: 0 auto 30px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; color: var(--blue);
+      border: 1px solid var(--blue-line);
+      font-size: 14px; font-weight: 500;
+      padding: 6px 16px; border-radius: 100px;
+      margin-bottom: 22px;
+    }
+    .badge .dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--blue);
+      box-shadow: 0 0 0 0 rgba(75,146,246,.6);
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(75,146,246,.55); }
+      70% { box-shadow: 0 0 0 9px rgba(75,146,246,0); }
+      100% { box-shadow: 0 0 0 0 rgba(75,146,246,0); }
+    }
+    .hero h1 {
+      color: var(--ink);
+      font-size: clamp(32px, 4.6vw, 52px);
+      font-weight: 800; line-height: 1.15;
+      margin-bottom: 16px; letter-spacing: -0.5px;
+    }
+    .hero h1 em { font-style: normal; color: var(--blue); }
+    .hero .lead {
+      font-size: 19px; font-weight: 300; color: var(--text);
+      max-width: 480px; margin-bottom: 30px;
+    }
+    .slogan {
+      font-size: 15px; font-weight: 500; color: var(--muted);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .slogan::before { content: ''; width: 28px; height: 2px; background: var(--blue); }
 
-    .stats-row {
-      display: flex;
-      justify-content: center;
-      background: rgba(255,255,255,0.07);
-      border-radius: 14px;
-      max-width: 360px;
-      margin: 0 auto;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.1);
+    .stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+      margin-top: 34px; max-width: 480px;
     }
-    .stat { flex: 1; padding: 14px 10px; text-align: center; border-left: 1px solid rgba(255,255,255,0.1); }
-    .stat:last-child { border-left: none; }
-    .stat-n { font-size: 22px; font-weight: 900; color: #5b9bd5; }
-    .stat-l { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 2px; }
-
-    /* PERKS */
-    .perks {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px 24px;
-      padding: 18px 20px;
-      background: #fff;
-      border-bottom: 1px solid #eee;
+    .stat {
+      background: #fff; border-radius: 18px; padding: 16px 10px; text-align: center;
+      box-shadow: 0 4px 18px rgba(75,146,246,0.10);
     }
-    .perk { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #333; font-weight: 500; }
-    .perk-dot {
-      width: 20px; height: 20px;
-      border-radius: 50%;
-      background: #5b9bd5;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .chk {
-      width: 9px; height: 5px;
-      border-left: 2px solid #fff;
-      border-bottom: 2px solid #fff;
-      transform: rotate(-45deg) translate(1px,-1px);
-    }
+    .stat-n { font-size: 28px; font-weight: 800; color: var(--blue); line-height: 1.1; }
+    .stat-l { font-size: 13px; color: var(--muted); margin-top: 4px; }
 
     /* FORM */
-    .form-wrap { padding: 32px 20px 56px; max-width: 480px; margin: 0 auto; }
     .form-card {
-      background: #fff;
-      border-radius: 20px;
-      padding: 32px 28px 26px;
-      box-shadow: 0 6px 32px rgba(0,0,0,0.1);
+      background: #fff; border-radius: 28px;
+      padding: 34px 30px 28px;
+      box-shadow: 0 18px 50px rgba(30,70,140,0.14);
+      border: 1px solid var(--blue-soft-2);
     }
-    .form-head { text-align: center; margin-bottom: 24px; }
-    .form-head h2 { font-size: 20px; font-weight: 700; color: #1a1a1a; margin-bottom: 5px; }
-    .form-head p { font-size: 14px; color: #999; }
+    .form-head { margin-bottom: 22px; }
+    .form-head h2 { font-size: 26px; font-weight: 800; color: var(--ink); line-height: 1.25; }
+    .form-head p { font-size: 15px; color: var(--muted); margin-top: 4px; }
 
     .field { margin-bottom: 14px; }
-    .field label { display: block; font-size: 13px; font-weight: 500; color: #555; margin-bottom: 6px; }
+    .field label { display: block; font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
     .field input, .field select {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1.5px solid #e2e2e2;
-      border-radius: 10px;
-      font-size: 15px;
-      font-family: 'Heebo', sans-serif;
-      color: #1a1a1a;
-      background: #fafafa;
-      outline: none;
-      transition: border-color 0.2s, background 0.2s;
-      direction: rtl;
+      width: 100%; padding: 13px 18px;
+      border: 1.5px solid var(--blue-line); border-radius: 100px;
+      font-size: 16px; font-family: inherit; color: var(--ink);
+      background: var(--blue-soft); outline: none;
+      transition: border-color .2s, background .2s, box-shadow .2s;
+      appearance: none; -webkit-appearance: none;
     }
-    .field input:focus, .field select:focus { border-color: #5b9bd5; background: #fff; }
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234b92f6' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: left 18px center;
+      padding-left: 40px; cursor: pointer;
+    }
+    .field input[type="tel"] { direction: ltr; text-align: right; }
+    .field input:focus, .field select:focus {
+      border-color: var(--blue); background: #fff;
+      box-shadow: 0 0 0 4px rgba(75,146,246,0.15);
+    }
+    .field.invalid input, .field.invalid select { border-color: var(--error); background: #fff7f7; }
+    .field-err { display: none; font-size: 13px; color: var(--error); margin-top: 5px; padding-right: 18px; }
+    .field.invalid .field-err { display: block; }
+
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
     .btn {
-      width: 100%;
-      padding: 15px;
-      background: #5b9bd5;
-      color: #fff;
-      font-size: 17px;
-      font-weight: 700;
-      font-family: 'Heebo', sans-serif;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
+      width: 100%; padding: 15px;
+      background: var(--blue); color: #fff;
+      font-size: 18px; font-weight: 700; font-family: inherit;
+      border: none; border-radius: 100px; cursor: pointer;
       margin-top: 8px;
-      transition: background 0.2s, transform 0.15s;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 8px 22px rgba(75,146,246,0.35);
     }
-    .btn:hover { background: #4a89c5; transform: translateY(-1px); }
+    .btn:hover { background: var(--blue-dark); transform: translateY(-1px); }
     .btn:active { transform: scale(0.98); }
-    .btn:disabled { background: #aac4e0; cursor: not-allowed; transform: none; }
+    .btn:disabled { background: #9fc3f7; cursor: wait; transform: none; box-shadow: none; }
+    .spinner {
+      width: 18px; height: 18px; border-radius: 50%;
+      border: 2.5px solid rgba(255,255,255,.4); border-top-color: #fff;
+      animation: spin .8s linear infinite; display: none;
+    }
+    .btn.loading .spinner { display: block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-    .privacy { font-size: 11px; color: #ccc; text-align: center; margin-top: 12px; }
-    .tagline-footer { font-size: 12px; color: #ccc; text-align: center; margin-top: 16px; font-family: 'Poppins', sans-serif; direction: ltr; }
-    .tagline-footer span { color: #5b9bd5; }
+    .form-alert {
+      display: none; margin-top: 12px;
+      background: #fff2f2; border: 1px solid #fbd0d0; color: #c43c3c;
+      font-size: 14px; padding: 11px 16px; border-radius: 16px; text-align: center;
+    }
+    .form-alert.show { display: block; }
+    .privacy {
+      font-size: 13px; color: var(--muted); text-align: center; margin-top: 14px;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
 
-    /* SUCCESS */
-    .success { display: none; text-align: center; padding: 16px 0; }
+    .success { display: none; text-align: center; padding: 24px 0 10px; }
+    .success.show { display: block; animation: fadeUp .5s ease; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
     .s-circle {
-      width: 72px; height: 72px;
-      background: #5b9bd5;
-      border-radius: 50%;
+      width: 80px; height: 80px; border-radius: 50%;
+      background: var(--blue-soft); margin: 0 auto 18px;
       display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 18px;
     }
-    .s-chk {
-      width: 30px; height: 17px;
-      border-left: 4px solid #fff;
-      border-bottom: 4px solid #fff;
-      transform: rotate(-45deg) translate(3px,-3px);
+    .success h3 { font-size: 24px; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
+    .success p { font-size: 16px; color: var(--muted); }
+
+    /* PERKS */
+    .perks { max-width: 1100px; margin: 0 auto; padding: 72px 20px 40px; }
+    .section-title { text-align: center; margin-bottom: 36px; }
+    .section-title h2 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 800; color: var(--ink); }
+    .section-title p { color: var(--muted); font-size: 17px; margin-top: 6px; }
+    .perk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .perk {
+      background: var(--blue-soft); border-radius: 24px; padding: 26px 24px;
+      transition: transform .2s, box-shadow .2s;
     }
-    .success h3 { font-size: 21px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
-    .success p { font-size: 14px; color: #777; line-height: 1.7; }
+    .perk:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(75,146,246,0.14); }
+    .perk-ic {
+      width: 48px; height: 48px; border-radius: 50%; background: #fff;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+    }
+    .perk h3 { font-size: 19px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .perk p { font-size: 15px; color: var(--text); font-weight: 300; }
 
-    /* ERROR */
-    .error-msg { display: none; background: #fff0f0; border: 1px solid #fcc; color: #c00; font-size: 13px; padding: 10px 14px; border-radius: 8px; margin-top: 10px; text-align: center; }
+    .cta-band {
+      max-width: 1100px; margin: 20px auto 72px; padding: 0 20px;
+    }
+    .cta-in {
+      background: var(--blue); color: #fff; border-radius: 28px;
+      padding: 38px 28px; text-align: center;
+    }
+    .cta-in h2 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; margin-bottom: 18px; }
+    .cta-in a {
+      display: inline-block; background: #fff; color: var(--blue);
+      text-decoration: none; font-weight: 700; font-size: 17px;
+      padding: 12px 34px; border-radius: 100px; transition: transform .2s;
+    }
+    .cta-in a:hover { transform: translateY(-2px); }
 
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 26px; }
-      .form-card { padding: 24px 18px 20px; }
-      .logo { font-size: 24px; }
+    footer {
+      border-top: 1px solid var(--blue-soft-2);
+      padding: 26px 20px; text-align: center; font-size: 14px; color: var(--muted);
+    }
+    footer img { height: 26px; display: block; margin: 0 auto 10px; }
+
+    @media (max-width: 900px) {
+      .hero-in { grid-template-columns: 1fr; gap: 34px; padding: 40px 16px 44px; }
+      .hero .lead { font-size: 17px; }
+      .perk-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .header-in { padding: 12px 16px; }
+      .logo img { height: 28px; }
+      .header-cta { font-size: 14px; padding: 8px 16px; }
+      .perk-grid { grid-template-columns: 1fr; }
+      .perks { padding: 52px 16px 28px; }
+      .form-card { padding: 26px 20px 22px; border-radius: 24px; }
+      .stat-n { font-size: 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
     }
   </style>
 </head>
 <body>
 
-  <div class="hero">
-    <div class="hero-badge"><div class="dot-live"></div>גיוס פעיל – כל הארץ</div>
-    <h1>מצטרפים למשפחה של<br><em>מעל 1,000 עובדים</em></h1>
-    <p>אווירה משפחתית, קידום אמיתי ותנאים מנצחים. השאירו פרטים ונציג יחזור אליכם בהקדם.</p>
-    <div class="stats-row">
-      <div class="stat"><div class="stat-n">1,000+</div><div class="stat-l">עובדים</div></div>
-      <div class="stat"><div class="stat-n">11</div><div class="stat-l">סניפים</div></div>
-      <div class="stat"><div class="stat-n">15+</div><div class="stat-l">שנות ניסיון</div></div>
+  <header class="header">
+    <div class="header-in">
+      <a class="logo" href="https://targetcall.co.il/" target="_blank" rel="noopener" aria-label="טרגט קול">
+        <img src="https://targetcall.co.il/wp-content/uploads/2020/10/targetcall-logo.svg" alt="targetcall" />
+      </a>
+      <a class="header-cta" href="#apply">הגישו מועמדות</a>
     </div>
-  </div>
+  </header>
 
-  <div class="perks">
-    <div class="perk"><div class="perk-dot"><div class="chk"></div></div>שכר אטרקטיבי</div>
-    <div class="perk"><div class="perk-dot"><div class="chk"></div></div>משמרות גמישות</div>
-    <div class="perk"><div class="perk-dot"><div class="chk"></div></div>הכשרה מלאה</div>
-    <div class="perk"><div class="perk-dot"><div class="chk"></div></div>קידום מהיר</div>
-    <div class="perk"><div class="perk-dot"><div class="chk"></div></div>אווירה משפחתית</div>
-  </div>
-
-  <div class="form-wrap">
-    <div class="form-card">
-      <div id="form-inner">
-        <div class="form-head">
-          <h2>השאירו פרטים עכשיו</h2>
-          <p>נציג גיוס יחזור אליכם תוך 24 שעות</p>
+  <section class="hero">
+    <div class="hero-in">
+      <div>
+        <div class="badge"><span class="dot"></span>גיוס פעיל · סניף שדרות</div>
+        <h1>עבודה בעולם<br>ה<em>כושר והבריאות</em></h1>
+        <p class="lead">מגייסים נציגות ונציגים לאפליקציות הכושר והספורט של קופות החולים – כללית אקטיב, מאוחדת WOW, מעוף לעמית, לאומית FIT ועובדים בריא. עבודה קרוב לבית בסניף שלנו בשדרות, בלי ניסיון קודם ועם הכשרה מלאה.</p>
+        <div class="slogan">חכמה טכנולוגית. עוצמה אנושית.</div>
+        <div class="stats">
+          <div class="stat"><div class="stat-n">1,200+</div><div class="stat-l">עובדות ועובדים</div></div>
+          <div class="stat"><div class="stat-n">שדרות</div><div class="stat-l">מקום העבודה</div></div>
+          <div class="stat"><div class="stat-n">16</div><div class="stat-l">שנות ניסיון</div></div>
         </div>
-        <div class="field">
-          <label for="name">שם מלא</label>
-          <input type="text" id="name" name="name" placeholder="ישראל ישראלי" required />
-        </div>
-        <div class="field">
-          <label for="phone">טלפון</label>
-          <input type="tel" id="phone" name="phone" placeholder="050-0000000" required />
-        </div>
-        <div class="field">
-          <label for="city">עיר מגורים</label>
-          <input type="text" id="city" name="city" placeholder="תל אביב, אשדוד, חיפה..." required />
-        </div>
-        <div class="field">
-          <label for="shift">משמרת מועדפת</label>
-          <select id="shift" name="shift">
-            <option value="">בחר/י</option>
-            <option value="בוקר">בוקר</option>
-            <option value="ערב">ערב</option>
-            <option value="גמיש / שניהם">גמיש / שניהם</option>
-          </select>
-        </div>
-        <button class="btn" id="submit-btn" onclick="submitForm()">שלחו את הפרטים שלי ←</button>
-        <div class="error-msg" id="error-msg">אירעה שגיאה, נסו שוב או צרו קשר ישירות.</div>
-        <div class="privacy">הפרטים שלכם נשמרים בסודיות מלאה</div>
-        <div class="tagline-footer"><span>target</span>call · Simply better.</div>
       </div>
-      <div class="success" id="success-msg">
-        <div class="s-circle"><div class="s-chk"></div></div>
-        <h3>קיבלנו! תודה רבה</h3>
-        <p>נציג מצוות הגיוס של targetcall<br>יצור איתכם קשר תוך 24 שעות.</p>
+
+      <div class="form-card" id="apply">
+        <form id="lead-form" novalidate>
+          <div class="form-head">
+            <h2>השאירו פרטים עכשיו</h2>
+            <p>נציג גיוס יחזור אליכם תוך 24 שעות</p>
+          </div>
+
+          <div class="field" data-field="name">
+            <label for="name">שם מלא</label>
+            <input type="text" id="name" name="name" placeholder="ישראל ישראלי" autocomplete="name" />
+            <div class="field-err">נא להזין שם מלא</div>
+          </div>
+          <div class="field" data-field="phone">
+            <label for="phone">טלפון</label>
+            <input type="tel" id="phone" name="phone" placeholder="050-0000000" autocomplete="tel" inputmode="tel" />
+            <div class="field-err">נא להזין מספר טלפון ישראלי תקין</div>
+          </div>
+          <div class="field" data-field="city">
+            <label for="city">עיר מגורים</label>
+            <input type="text" id="city" name="city" placeholder="שדרות, נתיבות, אופקים..." autocomplete="address-level2" />
+            <div class="field-err">נא להזין עיר מגורים</div>
+          </div>
+          <div class="field">
+            <label for="shift">שעות משמרת מועדפות</label>
+            <select id="shift" name="shift">
+              <option value="">בחרו שעות</option>
+              <option value="08:00-17:00">08:00–17:00</option>
+              <option value="09:00-18:00">09:00–18:00</option>
+              <option value="גמיש - שתי האפשרויות">גמיש – שתי האפשרויות</option>
+            </select>
+          </div>
+
+          <div class="hp" aria-hidden="true">
+            <label for="website">אתר</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <button class="btn" id="submit-btn" type="submit">
+            <span class="spinner"></span><span class="btn-txt">שלחו את הפרטים שלי</span>
+          </button>
+          <div class="form-alert" id="form-alert" role="alert"></div>
+          <div class="privacy">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            הפרטים שלכם נשמרים בסודיות מלאה
+          </div>
+        </form>
+
+        <div class="success" id="success-msg" role="status" aria-live="polite">
+          <div class="s-circle">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#4b92f6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+          </div>
+          <h3>קיבלנו, תודה רבה!</h3>
+          <p>נציג מצוות הגיוס של טרגט קול<br>יצור איתכם קשר תוך 24 שעות.</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <section class="perks">
+    <div class="section-title">
+      <h2>למה לעבוד איתנו?</h2>
+      <p>הון אנושי מהמעלה הראשונה מתחיל באנשים שלנו</p>
+    </div>
+    <div class="perk-grid">
+      <div class="perk">
+        <div class="perk-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4b92f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>שכר אטרקטיבי</h3><p>שכר בסיס תחרותי ובונוסים על עמידה ביעדים.</p>
+      </div>
+      <div class="perk">
+        <div class="perk-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4b92f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>שעות יום נוחות</h3><p>משמרות 08:00–17:00 או 09:00–18:00 – בלי לילות.</p>
+      </div>
+      <div class="perk">
+        <div class="perk-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4b92f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></div>
+        <h3>הכשרה מלאה</h3><p>לא צריך ניסיון קודם – אנחנו מלמדים את כל מה שצריך.</p>
+      </div>
+      <div class="perk">
+        <div class="perk-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4b92f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
+        <h3>עבודה עם משמעות</h3><p>עוזרים לאנשים להתחיל לזוז ולשמור על הבריאות שלהם.</p>
+      </div>
+      <div class="perk">
+        <div class="perk-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4b92f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+        <h3>אווירה משפחתית</h3><p>צוות תומך, אכפתיות והמון נשמה בכל סניף.</p>
+      </div>
+      <div class="perk">
+        <div class="perk-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4b92f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
+        <h3>קרוב לבית</h3><p>סניף בשדרות – לתושבי שדרות, נתיבות והסביבה.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="cta-in">
+      <h2>מוכנים להצטרף למשפחת טרגט קול?</h2>
+      <a href="#apply">השאירו פרטים עכשיו</a>
+    </div>
+  </section>
+
+  <footer>
+    <img src="https://targetcall.co.il/wp-content/uploads/2020/10/targetcall-logo.svg" alt="targetcall" />
+    © <span id="year"></span> כל הזכויות שמורות לטרגט קול בע"מ
+  </footer>
 
   <script>
-    // =====================================================
-    // הכנס כאן את הכתובת שתקבל מ-Google Apps Script
-    // =====================================================
-    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyIQNiVgc9-huSP_qwnWxAypEvIMqIStT70LPJsMEDLKSVNoHx6LP9PuMjBhT160rU/exec";
-    // =====================================================
+    // כתובת ה-Web App של Google Apps Script (Deploy → Web app → Who has access: Anyone)
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxrvpbPbXEeRluOGJPGoaNyRzMXW4ep-liTKgzOBOVNJqPuIvUIrdphxACTlTdRNS9q/exec";
 
-    async function submitForm() {
-      const name  = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const city  = document.getElementById('city').value.trim();
-      const shift = document.getElementById('shift').value;
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-      if (!name || !phone || !city) {
-        alert('נא למלא שם, טלפון ועיר');
+    const form = document.getElementById('lead-form');
+    const btn = document.getElementById('submit-btn');
+    const btnTxt = btn.querySelector('.btn-txt');
+    const alertBox = document.getElementById('form-alert');
+
+    function normalizePhone(v) {
+      let d = v.replace(/\D/g, '');
+      if (d.startsWith('972')) d = '0' + d.slice(3);
+      return d;
+    }
+    // נייד: 05X + 7 ספרות; נייח: 02/03/04/08/09 + 7 ספרות; 07X + 7 ספרות
+    function isValidPhone(d) {
+      return /^05\d{8}$/.test(d) || /^0[23489]\d{7}$/.test(d) || /^07\d{8}$/.test(d);
+    }
+
+    function setInvalid(name, bad) {
+      document.querySelector(`[data-field="${name}"]`).classList.toggle('invalid', bad);
+    }
+
+    ['name', 'phone', 'city'].forEach(id => {
+      document.getElementById(id).addEventListener('input', () => setInvalid(id, false));
+    });
+
+    function showAlert(msg) {
+      alertBox.textContent = msg;
+      alertBox.classList.add('show');
+    }
+
+    function setLoading(on) {
+      btn.disabled = on;
+      btn.classList.toggle('loading', on);
+      btnTxt.textContent = on ? 'שולח...' : 'שלחו את הפרטים שלי';
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      alertBox.classList.remove('show');
+
+      const name = form.name.value.trim();
+      const phoneRaw = form.phone.value.trim();
+      const phone = normalizePhone(phoneRaw);
+      const city = form.city.value.trim();
+      const shift = form.shift.value;
+
+      const errors = {
+        name: name.length < 2,
+        phone: !isValidPhone(phone),
+        city: city.length < 2
+      };
+      Object.entries(errors).forEach(([k, bad]) => setInvalid(k, bad));
+      const firstBad = Object.keys(errors).find(k => errors[k]);
+      if (firstBad) { document.getElementById(firstBad).focus(); return; }
+
+      // מלכודת בוטים – שדה נסתר שאדם לא ממלא
+      if (form.website.value) {
+        form.hidden = true;
+        document.getElementById('success-msg').classList.add('show');
         return;
       }
 
-      const btn = document.getElementById('submit-btn');
-      btn.disabled = true;
-      btn.textContent = 'שולח...';
+      setLoading(true);
 
       const data = {
         name,
         phone,
         city,
         shift: shift || 'לא צוין',
+        // מקור הליד: הוסיפו ?src=שם-הקבוצה לקישור בכל פרסום (למשל ?src=drushim-tlv)
+        source: new URLSearchParams(location.search).get('src') || 'ישיר',
         timestamp: new Date().toLocaleString('he-IL')
       };
 
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 15000);
+
       try {
-        await fetch(APPS_SCRIPT_URL, {
+        // text/plain = בקשה "פשוטה" בלי preflight, כך שאפשר לקרוא את התשובה ולוודא שהליד נשמר
+        const res = await fetch(APPS_SCRIPT_URL, {
           method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(data),
+          signal: ctrl.signal
         });
-        document.getElementById('form-inner').style.display = 'none';
-        document.getElementById('success-msg').style.display = 'block';
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+
+        let json = null;
+        try { json = await res.clone().json(); } catch (_) { /* תשובה לא-JSON – מספיק שהסטטוס תקין */ }
+        if (json && json.ok === false) throw new Error(json.error || 'server error');
+
+        form.hidden = true;
+        document.getElementById('success-msg').classList.add('show');
       } catch (err) {
-        btn.disabled = false;
-        btn.textContent = 'שלחו את הפרטים שלי ←';
-        document.getElementById('error-msg').style.display = 'block';
+        console.error('Lead submit failed:', err);
+        setLoading(false);
+        showAlert('לא הצלחנו לשלוח את הפרטים. בדקו את החיבור ונסו שוב בעוד רגע.');
+      } finally {
+        clearTimeout(timer);
       }
-    }
+    });
   </script>
 
 </body>
