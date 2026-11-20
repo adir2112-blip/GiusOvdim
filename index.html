@@ -6,6 +6,12 @@
   <title>דרושים – טרגט קול</title>
   <meta name="description" content="מצטרפים לטרגט קול – גיוס לסניף שדרות. שכר אטרקטיבי, שעות יום נוחות, הכשרה מלאה ועבודה בעולם הכושר והבריאות." />
   <meta name="theme-color" content="#4b92f6" />
+  <link rel="canonical" href="https://adir2112-blip.github.io/GiusOvdim/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="דרושים – טרגט קול, סניף שדרות" />
+  <meta property="og:description" content="גיוס נציגים לסניף שדרות: שעות יום נוחות, הכשרה מלאה ועבודה בעולם הכושר והבריאות." />
+  <meta property="og:url" content="https://adir2112-blip.github.io/GiusOvdim/" />
+  <meta property="og:image" content="https://adir2112-blip.github.io/GiusOvdim/og.png" />
   <link rel="icon" href="https://targetcall.co.il/wp-content/uploads/2020/10/targetcall-logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,6 +20,7 @@
     :root {
       --blue: #4b92f6;
       --blue-dark: #2f78e0;
+      --blue-ink: #2a6fd4; /* white text on it: 4.9:1 (WCAG AA) */
       --blue-soft: #f0f6ff;
       --blue-soft-2: #eef5fc;
       --blue-line: #d4e3f9;
@@ -48,7 +55,7 @@
     }
     .logo img { height: 34px; width: auto; display: block; }
     .header-cta {
-      background: var(--blue); color: #fff; text-decoration: none;
+      background: var(--blue-ink); color: #fff; text-decoration: none;
       font-weight: 500; font-size: 15px;
       padding: 9px 22px; border-radius: 100px;
       transition: background .2s;
@@ -162,7 +169,7 @@
 
     .btn {
       width: 100%; padding: 15px;
-      background: var(--blue); color: #fff;
+      background: var(--blue-ink); color: #fff;
       font-size: 18px; font-weight: 700; font-family: inherit;
       border: none; border-radius: 100px; cursor: pointer;
       margin-top: 8px;
@@ -225,12 +232,12 @@
       max-width: 1100px; margin: 20px auto 72px; padding: 0 20px;
     }
     .cta-in {
-      background: var(--blue); color: #fff; border-radius: 28px;
+      background: var(--blue-ink); color: #fff; border-radius: 28px;
       padding: 38px 28px; text-align: center;
     }
     .cta-in h2 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; margin-bottom: 18px; }
     .cta-in a {
-      display: inline-block; background: #fff; color: var(--blue);
+      display: inline-block; background: #fff; color: var(--blue-ink);
       text-decoration: none; font-weight: 700; font-size: 17px;
       padding: 12px 34px; border-radius: 100px; transition: transform .2s;
     }
@@ -259,6 +266,9 @@
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition: none !important; }
     }
+      .privacy-note { font-size: 12.5px; color: #4b5563; text-align: center; margin-top: 8px; line-height: 1.6; }
+    .privacy-note a, .foot-links a { color: #1f5fbf; text-decoration: underline; }
+    .foot-links { display: block; margin-top: 8px; font-size: 13px; }
   </style>
 </head>
 <body>
@@ -331,6 +341,7 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
             הפרטים שלכם נשמרים בסודיות מלאה
           </div>
+          <p class="privacy-note">הפרטים יועברו לצוות הגיוס של טרגט קול רק כדי לחזור אליכם בנוגע למשרה. מסירתם מרצונכם. <a href="privacy.html">מדיניות פרטיות</a></p>
         </form>
 
         <div class="success" id="success-msg" role="status" aria-live="polite">
@@ -387,6 +398,7 @@
   <footer>
     <img src="https://targetcall.co.il/wp-content/uploads/2020/10/targetcall-logo.svg" alt="targetcall" />
     © <span id="year"></span> כל הזכויות שמורות לטרגט קול בע"מ
+    <nav class="foot-links" aria-label="מידע משפטי"><a href="privacy.html">מדיניות פרטיות</a> · <a href="accessibility.html">הצהרת נגישות</a></nav>
   </footer>
 
   <script>
